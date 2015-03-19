@@ -1,4 +1,4 @@
-def check_file_exist():
+def _check_file_exist():
     """
     Checking file if exist
     :return: True|False
@@ -17,7 +17,7 @@ def check_file_exist():
         exit()
 
 
-def get_user_input_values():
+def _get_user_input_values():
     """
     Asking user for configurations before the quiz starts
     """
@@ -34,11 +34,11 @@ def get_user_input_values():
                 while not correct_count_answers_input:
                     try:
                         user_count_answers = int(raw_input("Count answers: "))
-                        if 1 < user_count_answers <= get_max_count_answers():  # check if user input value is correct
+                        if 1 < user_count_answers <= _get_max_count_answers():  # check if user input value is correct
                             correct_count_answers_input = True
                             Configurations.count_answers = user_count_answers  # storing user input value in a property
                         else:
-                            print "Min answers 2, Max answers {}".format(get_max_count_answers())
+                            print "Min answers 2, Max answers {}".format(_get_max_count_answers())
                     except ValueError:
                         print "Oops!  That was no valid number.  Try again..."
             else:
@@ -47,7 +47,7 @@ def get_user_input_values():
             print "Oops!  That was no valid number.  Try again..."
 
 
-def get_random_line_numbers():
+def _get_random_line_numbers():
     """
     Getting random line indexes from file
     """
@@ -66,7 +66,7 @@ def get_random_line_numbers():
         pass
 
 
-def get_max_count_answers():
+def _get_max_count_answers():
     """
     Getting min length of answers for all questions
     :return int
@@ -93,12 +93,12 @@ class Quiz(object):
         """
         Basic method for loading a quiz
         """
-        check_file_exist()
-        get_user_input_values()
-        get_random_line_numbers()
-        self.load_questions()
+        _check_file_exist()
+        _get_user_input_values()
+        _get_random_line_numbers()
+        self._load_questions()
 
-    def load_questions(self):
+    def _load_questions(self):
         """
         Method for loading all questions
         """
@@ -125,12 +125,12 @@ class Quiz(object):
 
                         for answer_text in all_answers:
                             answer = Answer(answer_text, False)
-                            question.add_answer(answer)  # set answer
+                            question._add_answer(answer)  # set answer
 
                         correct_answer = Answer(correct_answer_text.strip(), True)
-                        question.add_answer(correct_answer)  # set correct answer
-                        question.shuffle_answers()
-                        self.add_question(question)  # set question
+                        question._add_answer(correct_answer)  # set correct answer
+                        question._shuffle_answers()
+                        self._add_question(question)  # set question
                     else:
                         print 'Error in text file!'
                         exit()
@@ -141,7 +141,7 @@ class Quiz(object):
         """
         return self._questions
 
-    def add_question(self, question):
+    def _add_question(self, question):
         """
         :param question: Question
         :return list[Questions]
@@ -161,7 +161,7 @@ class Question(object):
         self._question_text = question_text
         self._answers = []
 
-    def add_answer(self, answer):
+    def _add_answer(self, answer):
         """
         :param answer: Answer
         :return list[Answer]
@@ -175,7 +175,7 @@ class Question(object):
         """
         return self._answers
 
-    def shuffle_answers(self):
+    def _shuffle_answers(self):
         """
         Shuffle answers
         """
