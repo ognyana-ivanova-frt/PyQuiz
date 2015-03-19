@@ -1,0 +1,6 @@
+What does the following code do? \n def a(b, c, d): pass|1|defines a list and initializes it|defines a function, which does nothing|defines a function, which passes its parameters through|defines an empty class
+What gets printed? Assuming python version 2.x\nprint type(1/2)|0|<type 'int'>|<type 'number'>|<type 'float'>|<type 'double'>|<type 'tuple'>
+What is the output of the following code?\nprint type([1,2])|4|<type 'tuple'>|<type 'int'>|<type 'set'>|	<type 'complex'>|<type 'list'>
+what gets printed?\ndef f(): pass\nprint type(f())|2|<type 'function'>|<type 'tuple'>|<type 'NoneType'>|<type 'str'>|<type 'type'>
+What is the output of the below program?\na = [1,2,3,None,(),[],]\nprint len(a)|3|syntax error|4|5|6|7
+What gets printed?\nx = 4.5\ny = 2\nprint x//y|0|2.0|2.25|9.0|20.25|21
